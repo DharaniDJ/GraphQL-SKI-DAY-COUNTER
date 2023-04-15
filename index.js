@@ -2,8 +2,17 @@ const { ApolloServer, gql } = require("apollo-server")
 
 // Takes Schema string and turns it to abstract syntax tree (AST)
 const typeDefs = gql`
+    # object type
+    # activity counter to track the number of days that we ski during a year
+    type SkiDay {
+        id:ID
+        date:String!
+        mountain: String!
+    }
+
     type Query{
         totalDays: Int!
+        allDays:[SkiDay!]!   # query for all days to return ski day inside of this array
     }
 `;
 
