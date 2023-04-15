@@ -8,6 +8,15 @@ const typeDefs = gql`
         id:ID
         date:String!
         mountain: String!
+        conditions:Conditions
+    }
+
+    #Enumeration for what was it like to ski on this particular day
+    enum Conditions {
+        POWDER
+        HEAVY
+        ICE
+        THIN
     }
 
     type Query{
