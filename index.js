@@ -23,6 +23,10 @@ const typeDefs = gql`
         totalDays: Int!
         allDays:[SkiDay!]!   # query for all days to return ski day inside of this array
     }
+
+    type Mutation {
+        removeDay(id: ID!): SkiDay!
+    }
 `;
 
 // functions that are gone return data for the schema
