@@ -1,4 +1,5 @@
-const { ApolloServer, gql, MockList } = require("apollo-server")
+const { ApolloServer, gql } = require("apollo-server")
+const { MockList } = require("@graphql-tools/mock")
 
 // Takes Schema string and turns it to abstract syntax tree (AST)
 const typeDefs = gql`
@@ -45,6 +46,12 @@ const typeDefs = gql`
     type Mutation {
         addDay(input:AddDayInput!): SkiDay   #Always nice to associate the input type, specifically with the name of the mutation.
         removeDay(id: ID!): RemoveDayPayload!   # take id of the day that we want to remove.
+    }
+
+    # https://www.apollographql.com/docs/apollo-server/data/subscriptions/
+    # https://gist.github.com/ivanstnsk/a6c91c43e70c1d171c0d0500ef6a9493
+    type Subscription {
+        newDay: SkiDay!
     }
 `;
 
