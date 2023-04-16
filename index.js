@@ -34,9 +34,17 @@ const typeDefs = gql`
         conditions: Conditions
     }
 
+    # custom object for returning
+    type RemoveDayPayload {
+        day: SkiDay!
+        removed: Boolean
+        totalBefore: Int
+        totalAfter: Int
+    }
+
     type Mutation {
         addDay(input:AddDayInput!): SkiDay   #Always nice to associate the input type, specifically with the name of the mutation.
-        removeDay(id: ID!): SkiDay!   # take id of the day that we want to remove.
+        removeDay(id: ID!): RemoveDayPayload!   # take id of the day that we want to remove.
     }
 `;
 
