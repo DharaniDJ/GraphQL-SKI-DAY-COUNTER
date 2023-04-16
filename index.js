@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require("apollo-server")
+const { ApolloServer, gql, MockList } = require("apollo-server")
 
 // Takes Schema string and turns it to abstract syntax tree (AST)
 const typeDefs = gql`
@@ -53,9 +53,18 @@ const typeDefs = gql`
 
 // }
 
+const mocks = {
+    Date: () => "1/2/2025",   // for Date return "1/2/2025"
+    String: () => "Cool data", // for String return "Cool data"
+    Query: () => ({
+        allDays: () => new MockList([1,15])
+    })
+};
+
 const server = new ApolloServer({
     typeDefs,
-    mocks: true // mock data for the schema in place of resolvers
+    // mocks: true // default mock data for the schema in place of resolvers
+    mocks
 })
 
 server.listen().then(({url})=>console.log(`server running at ${url}`));
