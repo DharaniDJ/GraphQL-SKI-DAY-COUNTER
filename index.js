@@ -6,12 +6,19 @@ const typeDefs = gql`
     # custom scalar, a customized value which have some semantic meaning
     scalar Date
 
+    """
+    An object that describes the characteristics of a ski day
+    """
     # object type
     # activity counter to track the number of days that we ski during a year
     type SkiDay {
+        "A ski day's unique indentifier"
         id:ID
+        "The date that a ski day occurred"
         date:Date!
+        "The location where a ski day occurred"
         mountain: String!
+        "The shape that the snow was in when this ski day"
         conditions:Conditions
     }
 
