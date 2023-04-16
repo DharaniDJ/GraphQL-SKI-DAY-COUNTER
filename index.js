@@ -24,8 +24,15 @@ const typeDefs = gql`
         allDays:[SkiDay!]!   # query for all days to return ski day inside of this array
     }
 
+    input AddDayInput{
+        date: String!
+        mountain: String!
+        conditions: Conditions
+    }
+
     type Mutation {
-        removeDay(id: ID!): SkiDay!
+        addDay(input:AddDayInput!): SkiDay   #Always nice to associate the input type, specifically with the name of the mutation.
+        removeDay(id: ID!): SkiDay!   # take id of the day that we want to remove.
     }
 `;
 
